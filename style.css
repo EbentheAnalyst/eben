@@ -1,13 +1,6 @@
-/* Basic reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Global styles */
+/* Base styles for larger screens (desktop/tablet) */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     line-height: 1.6;
     padding: 0 20px;
     background-color: #f4f4f4;
@@ -24,6 +17,7 @@ header {
 
 header h1 {
     font-size: 2.5em;
+    font-weight: 700;
 }
 
 nav ul {
@@ -42,7 +36,20 @@ nav ul li a {
     font-size: 1.2em;
 }
 
-/* Sections */
+/* Initial state for fade-in animations */
+section, .project, header {
+    opacity: 0; /* Start off invisible */
+    transform: translateY(30px); /* Elements will slide up slightly */
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out; /* Smooth transition */
+}
+
+/* Make elements fade in when they become visible */
+section.visible, .project.visible, header.visible {
+    opacity: 1; /* Make elements fully visible */
+    transform: translateY(0); /* Reset the position */
+}
+
+/* Sections and Projects */
 section {
     margin: 40px 0;
 }
@@ -65,17 +72,43 @@ h2 {
     color: #444;
 }
 
-/* Contact Section */
-#contact a {
-    color: #333;
-    text-decoration: none;
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2em;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    nav ul li a {
+        font-size: 1.5em;
+    }
+
+    .project {
+        padding: 10px;
+        margin: 15px 0;
+    }
+
+    .project h3 {
+        font-size: 1.5em;
+    }
 }
 
-/* Footer */
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    margin-top: 40px;
+/* Small mobile screens */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    nav ul li a {
+        font-size: 1.2em;
+    }
+
+    .project h3 {
+        font-size: 1.2em;
+    }
 }

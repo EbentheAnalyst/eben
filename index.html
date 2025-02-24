@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ohemaa's Portfolio</title>
+
+    <!-- Import Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@600&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -51,8 +55,28 @@
     <footer>
         <p>&copy; 2025 Ohemaa's Portfolio</p>
     </footer>
+
+    <!-- JavaScript for triggering fade-in effect on scroll -->
+    <script>
+        // Function to check if an element is in the viewport
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return rect.top <= window.innerHeight && rect.bottom >= 0;
+        }
+
+        // Add 'visible' class to elements when they come into the viewport
+        function checkVisibility() {
+            const elements = document.querySelectorAll('section, .project, header');
+            elements.forEach((el) => {
+                if (isElementInViewport(el)) {
+                    el.classList.add('visible'); // Add 'visible' to trigger fade-in effect
+                }
+            });
+        }
+
+        // Run the visibility check when the page loads and during scrolling
+        window.addEventListener('load', checkVisibility);
+        window.addEventListener('scroll', checkVisibility);
+    </script>
 </body>
 </html>
-
-
-
